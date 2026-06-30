@@ -1,21 +1,16 @@
 
 from pathlib import Path
 
-import os
-
-from dotenv import load_dotenv
-
-load_dotenv()
+from decouple import config
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = config("SECRET_KEY")
 
-SECRET_KEY = 'django-insecure-$h)vjbj!k52)a^st5yeo8oxy!-1-91kz#y@lezb!#b3@2oh-94'
+DEBUG = config("DEBUG", default=False, cast=bool)
 
-DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"] # Em produção domínio do deploy e DEBUG=True no .env
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +32,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -67,11 +63,11 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("DB_NAME"),
-        'USER': os.getenv("DB_USER"),
-        'PASSWORD': os.getenv("DB_PASSWORD"),
-        'HOST': os.getenv("DB_HOST"),
-        'PORT': os.getenv("DB_PORT"),
+        'NAME': config("DB_NAME"),
+        'USER': config("DB_USER"),
+        'PASSWORD': config("DB_PASSWORD"),
+        'HOST': config("DB_HOST"),
+        'PORT': config("DB_PORT"),
 
     }
 }
@@ -108,8 +104,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
 
 MEDIA_URL = "/media/"
 
-CORS_ALLOW_ALL_ORIGINS= True
+MEDIA_ROOT = BASE_DIR / "media"
+
+CORS_ALLOWED_ORIGINS = ["http://localhost:5173",]
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
