@@ -1,0 +1,155 @@
+
+# SISTEMA OPERACIONAL
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.directory
+
+
+# AMBIENTE PYTHON / DJANGO
+
+# Ambiente virtual
+venv/
+env/
+.env/
+.venv/
+
+# Cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Testes
+.coverage
+.pytest_cache/
+
+# Logs
+*.log
+
+
+# DJANGO
+
+# Arquivos de migração
+# (mantém __init__.py)
+*/migrations/*
+!*/migrations/__init__.py
+
+
+# Banco local SQLite
+db.sqlite3
+db.sqlite3-journal
+
+
+# Arquivos estáticos gerados
+staticfiles/
+
+# Uploads dos usuários
+media/
+
+# Arquivos temporários Django
+*.mo
+*.pot
+
+
+# VARIÁVEIS DE AMBIENTE
+
+.env
+.env.*
+!.env.example
+
+
+# POSTGRESQL
+
+*.sql
+*.dump
+
+
+# NODE / REACT
+
+# Dependências
+node_modules/
+
+# Build
+dist/
+build/
+
+# Cache
+.cache/
+.vite/
+
+# Logs npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Arquivos locais
+*.local
+
+
+# FRONTEND ENV
+
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+
+# IDEs / EDITORES
+
+# VS Code
+.vscode/
+
+# JetBrains
+.idea/
+*.iml
+
+# Sublime
+*.sublime-project
+*.sublime-workspace
+
+
+# TESTES / COBERTURA
+
+htmlcov/
+.tox/
+.nox/
+
+
+# DOCKER
+
+*.pid
+docker-compose.override.yml
+
+
+# ARQUIVOS TEMPORÁRIOS
+
+*.tmp
+*.temp
+*.bak
+*.swp
+
+
+# CERTIFICADOS / CHAVES
+
+*.pem
+*.key
+*.crt
+
+
+# BACKUPS
+
+backup/
+backups/
+*.zip
+*.tar
+*.gz

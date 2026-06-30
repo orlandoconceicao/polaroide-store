@@ -1,0 +1,55 @@
+
+# DJANGO CORE
+
+Django==5.2.0
+
+
+# API REST
+
+djangorestframework==3.16.0
+
+
+# AUTENTICAÇÃO JWT
+
+djangorestframework-simplejwt==5.5.0
+
+
+# CORS
+
+django-cors-headers==4.7.0
+
+
+# BANCO DE DADOS
+
+psycopg2-binary==2.9.10
+
+
+# VARIÁVEIS DE AMBIENTE
+
+python-dotenv==1.1.0
+
+
+# UPLOAD / PROCESSAMENTO DE IMAGEM
+
+Pillow==11.2.1
+
+
+# SERVIDOR DE PRODUÇÃO
+
+gunicorn==23.0.0
+
+
+# ARQUIVOS ESTÁTICOS
+
+whitenoise==6.9.0
+
+
+# DESENVOLVIMENTO
+
+django-debug-toolbar==5.2.0
+
+
+# TESTES
+
+pytest==8.3.5
+pytest-django==4.11.1

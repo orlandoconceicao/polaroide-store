@@ -1,0 +1,866 @@
+/* =============================================================================
+   POLAROID SHOP — Mapa Antigo · Pergaminho · Vintage Premium
+   ============================================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+
+/* ─── 1. RESET ────────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+    transition: color var(--duration) var(--ease);
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* ─── 2. VARIÁVEIS ────────────────────────────────────────────────────────── */
+
+:root {
+  /* Paleta — mapa antigo & pergaminho */
+  --primary: #5C4033;
+  --secondary: #D2B48C;
+  --background: #C2A878;
+  --surface: #E3CFA5;
+  --text: #3B2416;
+  --text-secondary: #5C4033;
+  --text-on-light: #4A3020;
+  --text-on-dark: #F5EBDD;
+  --text-soft: #7A5C3A;
+  --muted: #5C4033;
+  --link: #704214;
+  --link-hover: #3B2416;
+
+  /* Botões */
+  --btn-dark-bg: #5C4033;
+  --btn-dark-text: #F5EBDD;
+  --btn-light-bg: #E3CFA5;
+  --btn-light-text: #3B2416;
+
+  /* Formulários */
+  --placeholder: #7A5C3A;
+  --input-text: #3B2416;
+  --label-text: #4A3020;
+  --error-text: #8B2E2E;
+  --error-border: #A04444;
+  --success-text: #3D5C3A;
+
+  /* Tons vintage */
+  --beige: #D2B48C;
+  --paper: #E3CFA5;
+  --parchment-dark: #B8956A;
+  --ink: #3B2416;
+  --map-line: rgba(92, 64, 51, 0.18);
+
+  /* Derivadas */
+  --primary-hover: #4a3328;
+  --secondary-hover: #c4a67a;
+  --secondary-soft: rgba(210, 180, 140, 0.35);
+  --surface-warm: #EDD9B5;
+  --border: rgba(92, 64, 51, 0.18);
+  --border-strong: rgba(59, 36, 22, 0.32);
+  --shadow-polaroid: 0 2px 6px rgba(59, 42, 26, 0.08), 0 10px 28px rgba(59, 42, 26, 0.12);
+  --shadow-lift: 0 16px 40px rgba(59, 42, 26, 0.16);
+  --shadow-soft: 0 4px 14px rgba(59, 42, 26, 0.1);
+  --focus-ring: rgba(59, 36, 22, 0.32);
+
+  /* Tipografia clássica */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-body: "Lora", Georgia, serif;
+
+  /* Espaço */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --max-width: 1100px;
+
+  /* Forma */
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 100px;
+
+  /* Polaroid / foto antiga */
+  --polaroid-padding: 14px;
+  --polaroid-caption: 52px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration: 0.32s;
+  --duration-slow: 0.55s;
+}
+
+/* ─── 3. TIPOGRAFIA ───────────────────────────────────────────────────────── */
+
+body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    background-color: var(--background);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 6.5vw, 4.5rem);
+    font-weight: 500;
+}
+
+h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+h3 {
+    font-size: 1.05rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+p,
+label,
+small,
+P {
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--text-secondary);
+}
+
+label {
+    color: var(--label-text);
+    font-weight: 600;
+}
+
+p {
+    max-width: 40ch;
+}
+
+/* ─── 4. LAYOUT ───────────────────────────────────────────────────────────── */
+
+body {
+    background-image:
+        radial-gradient(ellipse 80% 60% at 15% 10%, rgba(227, 207, 165, 0.5), transparent 50%),
+        radial-gradient(ellipse 70% 50% at 85% 90%, rgba(184, 149, 106, 0.35), transparent 45%),
+        linear-gradient(175deg, #d4b88a 0%, var(--background) 40%, #b8956a 100%);
+}
+
+#root {
+    width: min(100%, var(--max-width));
+    margin: 0 auto;
+    padding: 0 var(--space-md) var(--space-2xl);
+    position: relative;
+    animation: fadeIn var(--duration-slow) var(--ease-out) both;
+}
+
+#root:has(> .login-page) {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+}
+
+#root::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.55;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+}
+
+br {
+    display: none;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    filter: sepia(0.12) contrast(1.02);
+    transition: transform var(--duration-slow) var(--ease-out), filter var(--duration) var(--ease);
+}
+
+/* ─── 5. NAVBAR ───────────────────────────────────────────────────────────── */
+/* Estilos da navbar global: ver navbar.css */
+
+/* ─── 6. HERO ─────────────────────────────────────────────────────────────── */
+
+nav + h1 {
+    max-width: 12ch;
+    margin-bottom: var(--space-md);
+    padding-top: var(--space-lg);
+    font-size: clamp(2.75rem, 7vw, 5rem);
+    line-height: 1.05;
+    animation: fadeUp var(--duration-slow) var(--ease-out) 0.08s both;
+}
+
+nav + h1::before {
+    content: "Memórias em papel";
+    display: block;
+    margin-bottom: var(--space-md);
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--primary);
+}
+
+nav + h1 + p {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    color: var(--text-on-light);
+    max-width: 36ch;
+    margin-bottom: var(--space-xl);
+    animation: fadeUp var(--duration-slow) var(--ease-out) 0.16s both;
+}
+
+/* Mini polaroid decorativa no hero */
+nav + h1 + p::after {
+    content: "";
+    display: block;
+    width: 72px;
+    height: 88px;
+    margin-top: var(--space-lg);
+    background: var(--surface);
+    border-radius: 3px;
+    box-shadow: var(--shadow-polaroid);
+    transform: rotate(-4deg);
+    transition: transform var(--duration-slow) var(--ease-out);
+}
+
+nav + h1 + p:hover::after {
+    transform: rotate(0deg) translateY(-4px);
+}
+
+/* ─── 7. PÁGINAS ──────────────────────────────────────────────────────────── */
+
+#root > div:not(.login-page) {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding-top: var(--space-xl);
+    animation: fadeUp var(--duration-slow) var(--ease-out) both;
+}
+
+#root > div:not(.login-page) > h1 {
+    margin-bottom: var(--space-xs);
+}
+
+#root > div:not(.login-page) > h1::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 2px;
+    margin-top: var(--space-md);
+    border-radius: 1px;
+    background: linear-gradient(90deg, var(--primary), var(--beige), transparent);
+}
+
+#root > div:not(.login-page) > h1 + p,
+#root > div:not(.login-page) > h1 ~ p:first-of-type {
+    margin-bottom: var(--space-lg);
+}
+
+/* Dashboard — tiles estilo app de fotos */
+#root > div:not(.login-page) > a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    width: 100%;
+    max-width: 32rem;
+    padding: 1.2rem 1.5rem;
+    margin: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-soft);
+    transition:
+        transform var(--duration) var(--ease-out),
+        box-shadow var(--duration) var(--ease-out),
+        border-color var(--duration) var(--ease);
+    animation: fadeUp var(--duration-slow) var(--ease-out) both;
+}
+
+#root > div:not(.login-page) > a::before {
+    content: "";
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--surface-warm);
+    border: 1px solid var(--border-strong);
+    transition: background var(--duration) var(--ease);
+}
+
+#root > div:not(.login-page) > a::after {
+    content: "›";
+    margin-left: auto;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--link);
+    transition: transform var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+
+#root > div:not(.login-page) > a:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-polaroid);
+    border-color: var(--border-strong);
+    color: var(--text);
+}
+
+#root > div:not(.login-page) > a:hover::before {
+    background: var(--beige);
+}
+
+#root > div:not(.login-page) > a:hover::after {
+    transform: translateX(4px);
+    color: var(--link-hover);
+}
+
+#root > div:not(.login-page) > a:nth-of-type(1) { animation-delay: 0.05s; }
+#root > div:not(.login-page) > a:nth-of-type(2) { animation-delay: 0.1s; }
+#root > div:not(.login-page) > a:nth-of-type(3) { animation-delay: 0.15s; }
+
+/* Painel de formulário */
+#root > div:not(.login-page):has(> input),
+#root > div:not(.login-page):has(> select),
+#root > div:not(.login-page):has(> button) {
+    max-width: 24rem;
+    margin: var(--space-lg) auto 0;
+    padding: var(--space-xl) var(--space-lg);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-polaroid), inset 0 0 48px rgba(184, 149, 106, 0.1);
+    gap: 0;
+}
+
+#root > div:not(.login-page):has(> input) > h1,
+#root > div:not(.login-page):has(> button) > h1 {
+    text-align: center;
+    font-size: clamp(1.75rem, 4vw, 2.2rem);
+    margin-bottom: var(--space-lg);
+}
+
+#root > div:not(.login-page):has(> input) > h1::after,
+#root > div:not(.login-page):has(> button) > h1::after {
+    margin: var(--space-md) auto 0;
+}
+
+/* ─── 8. CARDS — Estilo Polaroid ──────────────────────────────────────────── */
+
+#root > div:not(.login-page) > div {
+    position: relative;
+    max-width: 320px;
+    padding: var(--polaroid-padding);
+    padding-bottom: var(--polaroid-caption);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-polaroid), inset 0 0 40px rgba(184, 149, 106, 0.08);
+    transition:
+        transform var(--duration-slow) var(--ease-out),
+        box-shadow var(--duration) var(--ease-out);
+    animation: polaroidDrop var(--duration-slow) var(--ease-out) both;
+}
+
+/* Textura de papel no topo do card */
+#root > div:not(.login-page) > div:not(:has(img))::before {
+    content: "";
+    display: block;
+    height: 100px;
+    margin: calc(var(--polaroid-padding) * -1);
+    margin-bottom: var(--space-md);
+    background: linear-gradient(145deg, var(--surface-warm) 0%, #d9c49a 100%);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    border-bottom: 1px solid var(--map-line);
+}
+
+/* Detalhe de mapa antigo */
+#root > div:not(.login-page) > div:not(:has(img))::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 3px;
+    border-radius: 1px;
+    background: var(--primary);
+    opacity: 0.35;
+}
+
+#root > div:not(.login-page) > div:hover {
+    transform: translateY(-8px) rotate(-0.5deg);
+    box-shadow: var(--shadow-lift);
+}
+
+#root > div:not(.login-page) > div:nth-child(even):hover {
+    transform: translateY(-8px) rotate(0.5deg);
+}
+
+#root > div:not(.login-page) > div h3 {
+    color: var(--text);
+    font-size: 0.92rem;
+    margin-bottom: 0.2rem;
+}
+
+#root > div:not(.login-page) > div p,
+#root > div:not(.login-page) > div P {
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    margin: 0;
+    font-style: italic;
+}
+
+/* Lista de pedidos — grid de polaroids */
+#root > div:not(.login-page):has(> div > h3) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-lg);
+    align-items: start;
+}
+
+#root > div:not(.login-page):has(> div > h3) > h1 {
+    grid-column: 1 / -1;
+}
+
+#root > div:not(.login-page):has(> div > h3) > div {
+    max-width: 100%;
+}
+
+/* Stagger */
+#root > div:not(.login-page) > div:nth-child(2) { animation-delay: 0.06s; }
+#root > div:not(.login-page) > div:nth-child(3) { animation-delay: 0.12s; }
+#root > div:not(.login-page) > div:nth-child(4) { animation-delay: 0.18s; }
+#root > div:not(.login-page) > div:nth-child(5) { animation-delay: 0.24s; }
+#root > div:not(.login-page) > div:nth-child(6) { animation-delay: 0.3s; }
+
+/* ─── 9. IMAGENS — Moldura Polaroid ───────────────────────────────────────── */
+
+#root > div:not(.login-page) > div:has(img) {
+    padding: var(--polaroid-padding);
+    padding-bottom: calc(var(--polaroid-caption) + 8px);
+}
+
+#root > div:not(.login-page) > div:has(img) img {
+    aspect-ratio: 1 / 1;
+    border-radius: 2px;
+    margin-bottom: var(--space-sm);
+}
+
+#root > div:not(.login-page) > div:has(img):hover img {
+    transform: scale(1.03);
+    filter: sepia(0.18) contrast(1.05) brightness(1.02);
+}
+
+#root > div:not(.login-page) > div:has(img) h3,
+#root > div:not(.login-page) > div:has(img) p {
+    text-align: center;
+    padding: 0 4px;
+}
+
+#root > div:not(.login-page) > div:has(img) h3 {
+    font-style: normal;
+    font-weight: 500;
+}
+
+#root > div:not(.login-page) > div:has(img) p {
+    font-size: 0.78rem;
+}
+
+/* Galeria — grid assimétrico */
+#root > div:not(.login-page):has(> div:has(img)) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-lg);
+    padding-top: var(--space-lg);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    max-width: 100%;
+}
+
+#root > div:not(.login-page):has(> div:has(img)) > h1 {
+    grid-column: 1 / -1;
+}
+
+#root > div:not(.login-page):has(> div:has(img)) > div {
+    max-width: 100%;
+    justify-self: center;
+}
+
+#root > div:not(.login-page):has(> div:has(img)) > div:nth-child(odd) {
+    transform: rotate(-1.5deg);
+}
+
+#root > div:not(.login-page):has(> div:has(img)) > div:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+#root > div:not(.login-page):has(> div:has(img)) > div:hover {
+    transform: translateY(-10px) rotate(0deg) !important;
+    z-index: 2;
+}
+
+/* Imagens soltas */
+#root img:not(#root > div:not(.login-page) > div img) {
+    padding: var(--polaroid-padding);
+    padding-bottom: var(--polaroid-caption);
+    background: var(--surface);
+    border-radius: 4px;
+    box-shadow: var(--shadow-polaroid);
+}
+
+/* ─── 10. FORMULÁRIOS ─────────────────────────────────────────────────────── */
+
+input,
+select,
+textarea {
+    width: 100%;
+    appearance: none;
+    background: var(--surface-warm);
+    border: 1.5px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 0.9rem 1rem;
+    margin-bottom: var(--space-md);
+    font-size: 0.95rem;
+    color: var(--input-text);
+    transition:
+        border-color var(--duration) var(--ease),
+        box-shadow var(--duration) var(--ease),
+        background var(--duration) var(--ease);
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: var(--primary);
+    background: var(--surface);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--surface);
+    box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--placeholder);
+    opacity: 0.88;
+}
+
+input:user-invalid:not(:placeholder-shown),
+textarea:user-invalid:not(:placeholder-shown) {
+    border-color: var(--error-border);
+    background: rgba(160, 68, 68, 0.08);
+    color: var(--error-text);
+}
+
+select {
+    cursor: pointer;
+    background-image:
+        linear-gradient(45deg, transparent 50%, var(--secondary) 50%),
+        linear-gradient(135deg, var(--secondary) 50%, transparent 50%);
+    background-position:
+        calc(100% - 18px) calc(50% - 3px),
+        calc(100% - 12px) calc(50% - 3px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+    padding-right: 2.5rem;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+input[type="file"] {
+    padding: var(--space-lg);
+    border-style: dashed;
+    border-color: var(--border-strong);
+    background: var(--surface-warm);
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+input[type="file"]:hover {
+    border-color: var(--secondary);
+    background: var(--secondary-soft);
+}
+
+input[type="file"]::file-selector-button {
+    margin-right: var(--space-md);
+    padding: 0.5rem 1.1rem;
+    border: none;
+    border-radius: var(--radius-full);
+    background: var(--btn-dark-bg);
+    color: var(--btn-dark-text);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background var(--duration) var(--ease);
+}
+
+input[type="file"]::file-selector-button:hover {
+    background: var(--primary-hover);
+}
+
+input[type="number"] {
+    -moz-moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* ─── 11. BOTÕES ──────────────────────────────────────────────────────────── */
+
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 140px;
+    padding: 0.95rem 1.6rem;
+    margin-top: var(--space-xs);
+    border: 1px solid var(--primary-hover);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, var(--btn-dark-bg) 0%, #4a3328 100%);
+    color: var(--btn-dark-text);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 248, 235, 0.12);
+    transition:
+        transform var(--duration) var(--ease-out),
+        box-shadow var(--duration) var(--ease-out),
+        background var(--duration) var(--ease);
+}
+
+button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-polaroid);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-soft);
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+button:disabled:hover {
+    background: var(--primary);
+}
+
+#root > div:not(.login-page):has(> input) > button,
+#root > div:not(.login-page):has(> select) > button {
+    margin-top: var(--space-sm);
+}
+
+/* ─── 12. ANIMAÇÕES ───────────────────────────────────────────────────────── */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes polaroidDrop {
+    from {
+        opacity: 0;
+        transform: translateY(-16px) rotate(-2deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotate(0);
+    }
+}
+
+/* ─── 13. RESPONSIVIDADE ──────────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+    #root > div:not(.login-page):has(> div > h3) {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    #root > div:not(.login-page):has(> div:has(img)) {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    #root {
+        padding: 0 var(--space-sm) var(--space-xl);
+    }
+
+    nav + h1 {
+        font-size: clamp(2.2rem, 9vw, 3rem);
+        max-width: 100%;
+    }
+
+    nav + h1 + p::after {
+        width: 60px;
+        height: 74px;
+    }
+
+    #root > div:not(.login-page):has(> input),
+    #root > div:not(.login-page):has(> select),
+    #root > div:not(.login-page):has(> button) {
+        margin-top: var(--space-md);
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    #root > div:not(.login-page) > a {
+        max-width: 100%;
+    }
+
+    #root > div:not(.login-page):has(> div > h3) {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    #root > div:not(.login-page) > div {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    #root > div:not(.login-page):has(> div:has(img)) {
+        grid-template-columns: 1fr;
+    }
+
+    #root > div:not(.login-page):has(> div:has(img)) > div {
+        transform: none !important;
+    }
+
+    button {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
