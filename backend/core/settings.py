@@ -3,6 +3,7 @@ from pathlib import Path
 
 from decouple import config
 
+from datetime import timedelta
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -95,21 +96,49 @@ REST_FRAMEWORK = {
     ),
 }
 
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
 
-LANGUAGE_CODE = 'en-us'
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 
-TIME_ZONE = 'UTC'
+    "ROTATE_REFRESH_TOKENS": True,
+
+    "BLACKLIST_AFTER_ROTATION": True,
+}
+
+LANGUAGE_CODE = "en-us"
+
+TIME_ZONE = "UTC"
 
 USE_I18N = True
-
 USE_TZ = True
 
+# Static e Media
 STATIC_URL = "static/"
 
 MEDIA_URL = "/media/"
-
 MEDIA_ROOT = BASE_DIR / "media"
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:5173",]
+# HTTPS
+SECURE_SSL_REDIRECT = True
 
+SECURE_HSTS_SECONDS = 31536000  # 1 ano
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# CORS
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
+# Modelo padrão para chaves primárias
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Configurações de cookies seguros
+SESSION_COOKIE_SECURE=True
+CSRF_COOKIE_SECURE=True
+
+# headers de segurança adicionais
+SECURE_BROWSER_XSS_FILTER=True
+SECURE_CONTENT_TYPE_NOSNIFF=True
+X_FRAME_OPTIONS="DENY"

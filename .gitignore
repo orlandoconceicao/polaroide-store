@@ -128,7 +128,7 @@ htmlcov/
 # DOCKER
 
 *.pid
-docker-compose.override.yml
+docker-compose.yml
 
 
 # ARQUIVOS TEMPORÁRIOS

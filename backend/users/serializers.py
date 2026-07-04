@@ -8,23 +8,31 @@ class RegisterSerializers(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
     class Meta:
-        
         model = User
-
         fields = [
             "username",
             "email",
             "telefone",
-            "password"
+            "password",
         ]
 
-        def create(self, validated_data):
+    def validate_telefone(self, value):
+        if len(value) < 10:
+            raise serializers.ValidationError("Telefone inválido.")
+        return value
 
-            user = User.objects.create_user(
-                username = validated_data["username"],
-                email = validated_data["email"],
-                telefone = validated_data["telefone"],
-                password = validated_data["password"]
+    def create(self, validated_data):
+
+        if User.objects.filter(email=validated_data["email"]).exists():
+            raise serializers.ValidationError(
+                {"email": "Já existe um usuário com este e-mail."}
             )
 
-            return user
+        user = User.objects.create_user(
+            username=validated_data["username"],
+            email=validated_data["email"],
+            telefone=validated_data["telefone"],
+            password=validated_data["password"],
+        )
+
+        return user
