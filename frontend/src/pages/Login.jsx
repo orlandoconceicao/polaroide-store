@@ -13,13 +13,13 @@ export default function Login(){
 
     const {login} = useAuth();
 
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
 
     const [senha, setSenha] = useState("");
 
     async function entrar(){
 
-        await login(email, senha);
+        await login(username, senha);
 
         window.location = "/dashboard"
         
@@ -45,15 +45,15 @@ export default function Login(){
                 <div className="login-form">
 
                     <div className="login-field login-field--email">
-                        <label className="login-field__label" htmlFor="login-email">
-                            E-mail
+                        <label className="login-field__label" htmlFor="login-username">
+                            Usuário
                         </label>
                         <input
-                            id="login-email"
-                            type="email"
-                            placeholder="seu@email.com"
-                            autoComplete="email"
-                            onChange={e => setEmail(
+                            id="login-username"
+                            type="text"
+                            placeholder="Digite seu Usuário"
+                            autoComplete="username"
+                            onChange={e => setUsername(
                                 e.target.value
                             )}
                         />

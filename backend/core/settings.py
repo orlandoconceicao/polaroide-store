@@ -21,8 +21,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'rest_framework',
-    'rest_framework_simplejwt',
+    "rest_framework",
+    "rest_framework_simplejwt",
+    "rest_framework_simplejwt.token_blacklist",
     'corsheaders',
     'core',
 
@@ -94,6 +95,9 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES":(
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.AllowAny",
+    ),
 }
 
 SIMPLE_JWT = {
@@ -119,12 +123,14 @@ STATIC_URL = "static/"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+# Descomentar em produção
 # HTTPS
-SECURE_SSL_REDIRECT = True
+#SECURE_SSL_REDIRECT = True 
 
-SECURE_HSTS_SECONDS = 31536000  # 1 ano
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
+# SECURE_HSTS_SECONDS = 31536000  # 1 ano
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
+
 
 # CORS
 CORS_ALLOWED_ORIGINS = [
@@ -134,9 +140,10 @@ CORS_ALLOWED_ORIGINS = [
 # Modelo padrão para chaves primárias
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Descomentar em produção
 # Configurações de cookies seguros
-SESSION_COOKIE_SECURE=True
-CSRF_COOKIE_SECURE=True
+# SESSION_COOKIE_SECURE=True
+# CSRF_COOKIE_SECURE=True
 
 # headers de segurança adicionais
 SECURE_BROWSER_XSS_FILTER=True
