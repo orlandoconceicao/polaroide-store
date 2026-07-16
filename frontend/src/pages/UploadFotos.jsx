@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import api from "../services/api";
 
 import "../styles/upload.css";
@@ -29,6 +28,8 @@ export default function Upload() {
 
             alert("Foto enviada com sucesso!");
 
+            setArquivo(null);
+
         } catch (error) {
 
             console.error(error);
@@ -38,36 +39,60 @@ export default function Upload() {
         }
     }
 
+
     return (
 
+        
 
             <div className="upload-card">
 
                 <h1>Enviar Foto</h1>
 
-                <p>Escolha uma imagem para fazer upload.</p>
+                <p>
+                    Escolha uma imagem para fazer upload.
+                </p>
 
-                <input
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => setArquivo(e.target.files[0])}
-                />
 
-                {arquivo && (
-                    <img
-                        src={URL.createObjectURL(arquivo)}
-                        alt="Prévia"
-                        className="preview-image"
+                <label className="upload-button">
+
+                    <input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setArquivo(e.target.files[0])}
                     />
                     
+                </label>
+
+
+                {arquivo && (
+
+                    <div className="preview-container">
+
+                        <img
+                            src={URL.createObjectURL(arquivo)}
+                            alt="Prévia"
+                            className="preview-image"
+                        />
+
+                        <span>
+                            {arquivo.name}
+                        </span>
+
+                    </div>
 
                 )}
 
-                <button onClick={enviar}>
+
+                <button
+                    className="send-button"
+                    onClick={enviar}
+                >
                     Enviar Foto
                 </button>
 
+
             </div>
+
     );
 
 }

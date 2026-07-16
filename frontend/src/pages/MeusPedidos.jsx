@@ -25,7 +25,7 @@ export default function MeusPedidos(){
 
                     <h3>Pedido #{pedido.id}</h3>
 
-                    <P>Quantidade: {pedido.quantidade}</P>
+                    <p>Quantidade: {pedido.quantidade}</p>
 
                     <p>Status {pedido.status}</p>
 
